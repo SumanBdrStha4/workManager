@@ -20,6 +20,7 @@ public class FetchAlarmReceiver extends BroadcastReceiver {
         // Schedule next alarm in 15 minutes
         Calendar next = Calendar.getInstance();
         next.add(Calendar.MINUTE, 15);
-        AlarmHelper.scheduleAlarm(context, next.get(Calendar.HOUR_OF_DAY), next.get(Calendar.MINUTE));
+//        AlarmHelper.scheduleAlarm(context, next.get(Calendar.HOUR_OF_DAY), next.get(Calendar.MINUTE), 1);
+        AlarmHelper.scheduleAlarm(context);
     }
 }

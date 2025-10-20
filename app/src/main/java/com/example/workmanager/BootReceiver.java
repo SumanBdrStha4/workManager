@@ -12,7 +12,13 @@ public class BootReceiver extends BroadcastReceiver {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.d(TAG, "Boot completed, scheduling work.");
 //            WorkScheduler.scheduleFetchAt(context, 15, 30);
-            AlarmHelper.scheduleAlarm(context, 15, 59);
+//            AlarmHelper.scheduleAlarm(context, 15, 59, 1);
+            if (AlarmPreferenceManager.isAlarmEnabled(context)) {
+                Log.d(TAG, "Boot completed. Rescheduling alarm with saved settings.");
+                AlarmHelper.scheduleAlarm(context);
+            } else {
+                Log.d(TAG, "Boot completed, but no alarm was enabled. Nothing to do.");
+            }
         }
     }
 }
